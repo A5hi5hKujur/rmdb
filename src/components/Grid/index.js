@@ -3,7 +3,6 @@ import {Wrapper} from './Grid.styles';
 import MovieThumb from '../MovieThumb';
 
 const Grid = ({movies}) => {
-    console.log("INSIDE GRID");
     return(
             <Wrapper className="grid">
             {

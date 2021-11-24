@@ -12,10 +12,11 @@ import {useHomeFetch} from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg';
 
 const Home = () => {
-    const {state, loading, error, setSearchTerm} = useHomeFetch();
+    const {state, loading, error, setSearchTerm, setPage} = useHomeFetch();
     const [text, setText] = useState('');
     const initial = useRef(true);
 
+    // Effect of searchbar text changing
     useEffect(() => {
         if(initial.current)
         {
@@ -30,7 +31,6 @@ const Home = () => {
         return () => clearTimeout(timer);
     },[setSearchTerm, text]);
 
-    
     console.log(state);
     return (
         <>
@@ -52,10 +52,13 @@ const Home = () => {
                         value={text}
                         onChange={e => setText(e.currentTarget.value)}
                     />
-                    <button>Search</button>
                 </div>
             </div>
             <Grid movies={state.results}></Grid>
+            {!loading && state.page < state.total_pages &&
+                <div className='load-btn'>
+                    <button onClick={e => setPage(state.page + 1)}>Load More</button>
+                </div>}
         </>
     ); 
 };

@@ -57,14 +57,27 @@ export const GlobalStyle = createGlobalStyle`
                 input
                 {
                     height : 30px;
-                    width : 85%;
+                    width : 100%;
                     padding : 0px 10px;
                 }
-                button 
-                {
-                    height : 30px;
-                    width : 15%;
-                }
+            }
+    }
+
+    .load-btn
+    {
+        max-width: var(--maxWidth);
+        margin : 0px auto;
+            button{
+                display : block;
+                width : 120px;
+                height : 40px;
+                background : #333;
+                color : white;
+                border-radius : 50px;
+                margin : 20px auto;
+                cursor : pointer;
+                font-weight : bold;
+                border : none;
             }
     }
 `;

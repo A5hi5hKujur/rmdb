@@ -10,6 +10,8 @@ const initialState = {
 
 export const useHomeFetch = () => {
     const [searchTerm, setSearchTerm] = useState('');
+
+    const [page, setPage] = useState(1);
     // when api fetches movies correctly
     const [state, setState] = useState(initialState);
     // when is in the midst of fetching
@@ -17,7 +19,6 @@ export const useHomeFetch = () => {
     // when some error occurs while fetching the movies from api
     const [error, setError] = useState(false);
 
-    console.log(searchTerm);
 
     const fetchMovies = async (page, searchTerm = "") => {
         try
@@ -43,6 +44,11 @@ export const useHomeFetch = () => {
         setState(initialState);
         fetchMovies(1, searchTerm);
     }, [searchTerm]);
-    
-    return {state, loading, error, setSearchTerm};
+
+    // load more effect
+    useEffect(() => {
+        fetchMovies(page, searchTerm);
+    }, [page, searchTerm]);
+
+    return {state, loading, error, setSearchTerm, setPage};
 };
