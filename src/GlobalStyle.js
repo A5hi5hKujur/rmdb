@@ -42,10 +42,15 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    a{
+        text-decoration : none;
+        color : inherit;
+    }
+
     .searchbar
     {
         width : 100%;
-        padding 20px;
+        padding: 20px;
         background : #333;
 
             .container
