@@ -40,6 +40,10 @@ export const GlobalStyle = createGlobalStyle`
             font-size : 1rem;
             color : var(--white);
         }
+        ul{
+            padding : 0px;
+            margin : 0px;
+        }
     }
 
     a{
